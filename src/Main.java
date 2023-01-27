@@ -3,12 +3,14 @@ import java.awt.*;
 import java.awt.event.*;//need this for listeners
 public class Main
 {
+    private static int ducks = 0;
     public static void main(String[] args)
     {
-        int toggle = 0;
+
+
         //1 make a frame
         JFrame myFrame = new JFrame();
-        myFrame.setSize(400,200);
+        myFrame.setSize(600,700);
 
         //2 make a panel
         JPanel myPanel = new JPanel();
@@ -41,14 +43,15 @@ public class Main
         {
             public void actionPerformed(ActionEvent e)
             {
-                myLabel.setText("Duckies Collected: 1");
+                myLabel.setText("Duckies Collected: " + ducks);
+                ducks++;
             }
         });
 
         //creating an image
-        ImageIcon icon2 = new ImageIcon("downloads/duck.png");
-        icon2.setImage(icon2.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
-        JLabel pic2 = new JLabel(icon2.getImage("downloads/duck.png"));
+        ImageIcon icon1 = new ImageIcon(Main.class.getResource("/images.png"));
+        icon1.setImage(icon1.getImage().getScaledInstance(300,300,Image.SCALE_DEFAULT));
+        JLabel pic = new JLabel(icon1);
 
         topPanel.add(myButton);
         topPanel.add(myLabel);
@@ -60,7 +63,7 @@ public class Main
         myPanel.add(myLabel2, BorderLayout.NORTH);
         myPanel.add(myLabel, BorderLayout.EAST);
         myPanel.add(myButton, BorderLayout.SOUTH);
-        myPanel.add(pic2, BorderLayout.CENTER);
+        myPanel.add(pic, BorderLayout.CENTER);
 
         //4 put panel on frame
         myFrame.add(myPanel);
